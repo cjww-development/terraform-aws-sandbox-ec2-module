@@ -1,6 +1,6 @@
 data "aws_iam_policy_document" "default_policy_document" {
   statement {
-    sid = "AssumeRole"
+    sid    = "AssumeRole"
     effect = "Allow"
 
     principals {
@@ -15,8 +15,8 @@ data "aws_iam_policy_document" "default_policy_document" {
 }
 
 resource "aws_iam_role" "default_role" {
-  name = var.policy_name
-  path = "/"
+  name               = var.policy_name
+  path               = "/"
   assume_role_policy = data.aws_iam_policy_document.default_policy_document.json
 }
 

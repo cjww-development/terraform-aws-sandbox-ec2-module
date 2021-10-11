@@ -22,9 +22,22 @@ resource "aws_instance" "sandbox_instance" {
 
   iam_instance_profile = aws_iam_instance_profile.default_instance_profile.name
 
+  key_name = aws_key_pair.ssh.key_name
+
   user_data = file(var.user_data_file_path)
 
   monitoring = true
+
+  metadata_options {
+    http_endpoint = "enabled"
+    http_tokens   = "required"
+  }
+
+  root_block_device {
+    encrypted = true
+  }
+
+  ebs_optimized = true
 
   tags = var.tags
 }

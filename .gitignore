@@ -34,3 +34,6 @@ override.tf.json
 
 # Editors
 .idea
+
+# sh files
+*.sh
